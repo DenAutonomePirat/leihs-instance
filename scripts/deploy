@@ -3,4 +3,8 @@
 git submodule update --recursive --init --force --quiet
 cd leihs/deploy
 
-bin/ansible-playbook -i ../../hosts deploy_play.yml
+bin/ansible-playbook \
+  -i ../../hosts \
+  -e 'use_s3_build_cache=yes' \
+  deploy_play.yml \
+  "$@"
